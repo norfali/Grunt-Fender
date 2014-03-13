@@ -1,4 +1,4 @@
-Grunt-Fender - v0.2.0
+Grunt-Fender - v0.2.1
 =====================
 
 > Grunt to simplify front-end development workflow for Sitecore projects
