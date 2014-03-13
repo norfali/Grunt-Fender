@@ -1,0 +1,22 @@
+{
+  "name": "Grunt-Fender",
+  "version": "0.2.0",
+  "author": "Nadhim Orfali <nad@fenka.co.uk>",
+  "description": "Grunt Package for a Sitecore project",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "load-grunt-tasks": "~0.4.0",
+    "grunt-contrib-coffee": "~0.10.0",
+    "grunt-contrib-watch": "~0.6.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-docco": "~0.3.3",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-css-metrics": "~0.1.2",
+    "grunt-svg2png": "~0.2.1",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-newer": "0.6.1"
+  },
+  "dependencies": {
+    "time-grunt": "*"
+  }
+}
