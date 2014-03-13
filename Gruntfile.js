@@ -1,56 +1,7 @@
-// *************************************************
-// INIT CONFIG SETTINGS
-// Project specific settings
-// *************************************************
-
-var jslib_folder = 'project'; // Javascript lib folder
-var scss_folder = 'scss'; // CSS folder
-var css_folder = 'css'; // CSS folder
-var img_folder = 'images'; // Images folder
-var js_folder = 'js'; // JS folder
-var project_path = "D:/TFS2012/Hello World/Foo.HelloWorld.Website"; // Full project path (do not include "/" end of path)
-var sitecore_path = "C:/Sitecore/HelloWorld/Website"; // Full Sitecore path (do not include "/" end of path)
-var watch_scss = ['style.scss', 'normalize.scss', 'print.scss', 'ie-master.scss']; // List of SCSS files
-var minify_css = ['style.css']; // List of compiled CSS files for minification (SASS' compressed was unstable)
-var net_js = ['custom-net.js']; // Any NET specific JS files (e.g. custom NET validation overrides for better experience)
-var watch_coffee = ['project/*.coffee', 'app.coffee', 'lib.coffee']; // List of CoffeeScript files to watch
-var copy_js = ["lib.js", "app.js", net_js]; // List of compiled JS files
-var app_js = ['app.coffee']; // Main app Coffee file
-// List of "mini" Coffee files for concatenation (generating lib.js)
-var lib_js = [
-            jslib_folder + '/' + 'initfoundation.coffee',
-            jslib_folder + '/' + 'general.coffee',
-            jslib_folder + '/' + 'mobile.coffee',
-            jslib_folder + '/' + 'language-toggler.coffee',
-            jslib_folder + '/' + 'mini-basket.coffee',
-            jslib_folder + '/' + 'ajax-progress.coffee',
-            jslib_folder + '/' + 'lazy-pagination.coffee',
-            jslib_folder + '/' + 'product-filter.coffee',
-            jslib_folder + '/' + 'share.coffee',
-            jslib_folder + '/' + 'newsletter-signup.coffee',
-            jslib_folder + '/' + 'sync-height.coffee',
-            jslib_folder + '/' + 'product-tabs.coffee',
-            jslib_folder + '/' + 'search-tabs.coffee',
-            jslib_folder + '/' + 'image-maps.coffee',
-            jslib_folder + '/' + 'video-modal.coffee',
-            jslib_folder + '/' + 'google-maps.coffee',
-            jslib_folder + '/' + 'user-account.coffee',
-            jslib_folder + '/' + 'same-address.coffee',
-            jslib_folder + '/' + 'currency-conversion.coffee',
-            jslib_folder + '/' + 'password-switch.coffee',
-            jslib_folder + '/' + 'password-strength.coffee',
-            jslib_folder + '/' + 'ecommerce.coffee',
-            jslib_folder + '/' + 'toggle-select.coffee'
-          ];
-
-// *************************************************
-// DO NOT MODIFY ANYTHING BELOW THIS LINE
-// Unless you really need to...!
-// *************************************************
-
 module.exports = function(grunt) {
 
   grunt.initConfig({
+    globalConfig: grunt.file.readJSON('gruntconfig.json'),
     pkg: grunt.file.readJSON('package.json'),
     coffee: {
       compile: {
@@ -59,8 +10,8 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         files: {
-          'app.js': app_js,
-          'lib.js':  lib_js
+          'app.js': '<%= globalConfig.app_js %>',
+          'lib.js':  '<%= globalConfig.lib_js %>'
         }
       }
     },
@@ -69,16 +20,16 @@ module.exports = function(grunt) {
         files: [
           { // compile to project css folder
             expand: true,
-            cwd: project_path + '/' + scss_folder,
-            src: watch_scss,
-            dest: project_path + '/' + css_folder,
+            cwd: '<%= globalConfig.project_path %>/<%= globalConfig.scss_folder %>',
+            src: '<%= globalConfig.watch_scss %>',
+            dest: '<%= globalConfig.project_path %>/<%= globalConfig.css_folder %>',
             ext: '.css'
           },
           { // compile and copy over to sitecore folder
             expand: true,
-            cwd: project_path + '/' + scss_folder,
-            src: watch_scss,
-            dest: sitecore_path + '/' + css_folder,
+            cwd: '<%= globalConfig.project_path%>/<%= globalConfig.scss_folder %>',
+            src: '<%= globalConfig.watch_scss%>',
+            dest: '<%= globalConfig.sitecore_path%>/<%= globalConfig.css_folder %>',
             ext: '.css'
           }
         ]
@@ -86,7 +37,7 @@ module.exports = function(grunt) {
     },
     cssmetrics: {
       dev: {
-        src: [project_path + '/' + css_folder + '/*.css']
+        src: ['<%= globalConfig.project_path%>/<%= globalConfig.css_folder %>/*.css']
       }
     },
     copy: {
@@ -94,9 +45,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: project_path + "/" + js_folder + "/",
-            src: copy_js,
-            dest: sitecore_path + "/" + js_folder + "/",
+            cwd: '<%= globalConfig.project_path%>/<%= globalConfig.js_folder %>/',
+            src: '<%= globalConfig.copy_js',
+            dest: '<%= globalConfig.sitecore_path%>/<%= globalConfig.js_folder %>/',
             filter: "isFile"
           }
         ]
@@ -104,19 +55,19 @@ module.exports = function(grunt) {
     },
     docco: {
       debug: {
-        src: [jslib_folder + '/*.coffee'],
+        src: ['<%= globalConfig.jsdocs_folder %>/*.coffee'],
         options: {
-          output: 'docs/'
+          output: '<%= globalConfig.jsdocs_folder_output %>/'
         }
       }
     },
     watch: {
       coffee: {
-        files: watch_coffee,
+        files: '<%= globalConfig.watch_coffee%>',
         tasks: ['default']
       },
       sass: {
-        files: project_path + '/' + scss_folder + '/**/*.scss',
+        files: '<%= globalConfig.project_path%>/<%= globalConfig.scss_folder %>/**/*.scss',
         tasks: ['sass'],
         options: {
           livereload: true
@@ -128,9 +79,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: project_path + '/' + img_path,
+            cwd: '<%= globalConfig.project_path%>/<%= globalConfig.img_folder %>',
             src: ['*.svg'],
-            dest: project_path + '/' + img_path
+            dest: '<%= globalConfig.project_path%>/<%= globalConfig.img_folder %>'
           }
         ],
         options: {
@@ -141,9 +92,9 @@ module.exports = function(grunt) {
     cssmin: {
       minify: {
         expand: true,
-        cwd: project_path + '/' + css_path + '/',
-        src: minify_css,
-        dest: project_path + '/' + css_path + '/',
+        cwd: '<%= globalConfig.project_path%>/<%= globalConfig.css_folder %>/',
+        src: ['*.css'],
+        dest: '<%= globalConfig.project_path%>/<%= globalConfig.css_folder %>/',
         ext: '.min.css'
       }
     }
@@ -155,5 +106,4 @@ module.exports = function(grunt) {
 
   // Default task(s)
   grunt.registerTask('default', ['newer:coffee', 'newer:sass', 'newer:copy', 'newer:docco']);
-
 };
