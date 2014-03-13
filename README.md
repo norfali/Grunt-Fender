@@ -15,26 +15,41 @@ Download and add to your project. Open Gruntfile.js, edit the config, <code>npm 
 ## Example Config
 
 ```js
-var jslib_folder = 'project'; // Javascript lib folder
-var scss_folder = 'scss'; // CSS folder
-var css_folder = 'css'; // CSS folder
-var img_folder = 'images'; // Images folder
-var js_folder = 'js'; // JS folder
-var project_path = "D:/TFS2012/Hello World/Foo.HelloWorld.Website"; // Full project path (do not include "/" end of path)
-var sitecore_path = "C:/Sitecore/HelloWorld/Website"; // Full Sitecore path (do not include "/" end of path)
-var watch_scss = ['style.scss', 'normalize.scss', 'print.scss', 'ie-master.scss']; // List of SCSS files
-var minify_css = ['style.css']; // List of compiled CSS files for minification (SASS' compressed was unstable)
-var net_js = ['custom-net.js']; // Any NET specific JS files (e.g. custom NET validation overrides for better experience)
-var watch_coffee = ['project/*.coffee', 'app.coffee', 'lib.coffee']; // List of CoffeeScript files to watch
-var copy_js = ["lib.js", "app.js", net_js]; // List of compiled JS files
-var app_js = ['app.coffee']; // Main app Coffee file
-// List of "mini" Coffee files for concatenation (generating lib.js)
-var lib_js = [
-            jslib_folder + '/' + 'initfoundation.coffee',
-            jslib_folder + '/' + 'general.coffee',
-            jslib_folder + '/' + 'mobile.coffee',
-            jslib_folder + '/' + 'language-toggler.coffee'
-          ];
+{
+  "scss_folder" : "scss",
+  "css_folder" : "css",
+  "img_folder" : "images",
+  "js_folder" : "js",
+  "project_path" : "D:/TFS2012/Hello World/Foo.HelloWorld.Website",
+  "sitecore_path" : "C:/Sitecore/HelloWorld/Website",
+  "watch_scss" : [
+    "style.scss", 
+    "normalize.scss", 
+    "print.scss", 
+    "ie-master.scss"
+  ],
+  "watch_coffee" : [
+    "project/*.coffee", 
+    "app.coffee", 
+    "lib.coffee"
+  ],
+  "copy_js" : [
+    "lib.js", 
+    "app.js",
+    "custom-net.js"
+  ],
+  "app_js" : [
+    "app.coffee"
+  ],
+  "jsdocs_folder" : "project",
+  "jsdocs_folder_output" : "docs",
+  "lib_js" : [
+    "project/initfoundation.coffee",
+    "project/general.coffee",
+    "project/mobile.coffee",
+    "project/language-toggler.coffee"
+  ]
+}
 ```
 
 ## Usage
@@ -57,6 +72,11 @@ Simply type <code>grunt watch</code> during production, however there a few task
 * [grunt-contrib-cssmin](https://www.npmjs.org/package/grunt-contrib-cssmin)
 * [grunt-newer](https://www.npmjs.org/package/grunt-newer)
 * [time-grunt](https://www.npmjs.org/package/time-grunt)
+
+## Release History
+
+* 0.2.1: Removed config options from Gruntfile.js
+* 0.2.0: Initial release
 
 ## Next stages
 
