@@ -1,0 +1,35 @@
+{
+  "scss_folder" : "scss",
+  "css_folder" : "css",
+  "img_folder" : "images",
+  "js_folder" : "js",
+  "project_path" : "D:/TFS2012/Hello World/Foo.HelloWorld.Website",
+  "sitecore_path" : "C:/Sitecore/HelloWorld/Website",
+  "watch_scss" : [
+    "style.scss", 
+    "normalize.scss", 
+    "print.scss", 
+    "ie-master.scss"
+  ],
+  "watch_coffee" : [
+    "project/*.coffee", 
+    "app.coffee", 
+    "lib.coffee"
+  ],
+  "copy_js" : [
+    "lib.js", 
+    "app.js",
+    "custom-net.js"
+  ],
+  "app_js" : [
+    "app.coffee"
+  ],
+  "jsdocs_folder" : "project",
+  "jsdocs_folder_output" : "docs",
+  "lib_js" : [
+    "project/initfoundation.coffee",
+    "project/general.coffee",
+    "project/mobile.coffee",
+    "project/language-toggler.coffee"
+  ]
+}
