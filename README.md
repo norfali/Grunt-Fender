@@ -1,4 +1,4 @@
-Grunt-Fender - v0.2.2
+Grunt-Fender - v0.2.3
 =====================
 
 > Grunt to simplify front-end development workflow for Sitecore projects
@@ -75,6 +75,7 @@ Simply type <code>grunt watch</code> during production, however there a few task
 
 ## Release History
 
+* 0.2.3: Tweaked SASS task for better performance
 * 0.2.2: Replaced grunt-contrib-copy with grunt-sync for better ASPX/ASCX watching & copying
 * 0.2.1: Removed config options from Gruntfile.js
 * 0.2.0: Initial release
