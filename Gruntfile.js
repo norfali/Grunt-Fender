@@ -40,15 +40,14 @@ module.exports = function(grunt) {
         src: ['<%= globalConfig.project_path%>/<%= globalConfig.css_folder %>/*.css']
       }
     },
-    copy: {
+    sync: {
       main: {
         files: [
           {
             expand: true,
-            cwd: '<%= globalConfig.project_path%>/<%= globalConfig.js_folder %>/',
-            src: '<%= globalConfig.copy_js',
-            dest: '<%= globalConfig.sitecore_path%>/<%= globalConfig.js_folder %>/',
-            filter: "isFile"
+            cwd: '<%= globalConfig.project_path%>/',
+            src: ['**/*.ascx', '**/*.aspx'],
+            dest: '<%= globalConfig.sitecore_path%>/'
           }
         ]
       }
@@ -69,6 +68,16 @@ module.exports = function(grunt) {
       sass: {
         files: '<%= globalConfig.project_path%>/<%= globalConfig.scss_folder %>/**/*.scss',
         tasks: ['sass'],
+        options: {
+          livereload: true
+        }
+      },
+      sync: {
+        files: [
+          '<%= globalConfig.project_path%>/**/*.ascx',
+          '<%= globalConfig.project_path%>/**/*.aspx'
+        ],
+        tasks: ['sync:main'],
         options: {
           livereload: true
         }
