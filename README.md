@@ -1,4 +1,4 @@
-Grunt-Fender - v0.2.1
+Grunt-Fender - v0.2.3
 =====================
 
 > Grunt to simplify front-end development workflow for Sitecore projects
@@ -64,7 +64,7 @@ Simply type <code>grunt watch</code> during production, however there a few task
 * [load-grunt-tasks](https://www.npmjs.org/package/load-grunt-tasks)
 * [grunt-contrib-coffee](https://www.npmjs.org/package/grunt-contrib-coffee)
 * [grunt-contrib-watch](https://www.npmjs.org/package/grunt-contrib-watch)
-* [grunt-contrib-copy](https://www.npmjs.org/package/grunt-contrib-copy)
+* [grunt-sync](https://npmjs.org/package/grunt-sync)
 * [grunt-docco](https://www.npmjs.org/package/grunt-docco)
 * [grunt-contrib-sass](https://www.npmjs.org/package/grunt-contrib-sass)
 * [grunt-css-metrics](https://www.npmjs.org/package/grunt-css-metrics)
@@ -75,12 +75,12 @@ Simply type <code>grunt watch</code> during production, however there a few task
 
 ## Release History
 
+* 0.2.2: Replaced grunt-contrib-copy with grunt-sync for better ASPX/ASCX watching & copying
 * 0.2.1: Removed config options from Gruntfile.js
 * 0.2.0: Initial release
 
 ## Next stages
 
-* Watch ASP.NET files for quick publish (integrate with newer grunt)
 * Add growl support for notification
 * SVG optimisation
 
