@@ -1,6 +1,6 @@
 {
   "name": "Grunt-Fender",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "author": "Nadhim Orfali",
   "description": "Grunt Package for a Sitecore project",
   "devDependencies": {
