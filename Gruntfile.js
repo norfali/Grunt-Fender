@@ -32,7 +32,10 @@ module.exports = function(grunt) {
             dest: '<%= globalConfig.sitecore_path%>/<%= globalConfig.css_folder %>',
             ext: '.css'
           }
-        ]
+        ],
+        options: {
+          quiet: true
+        }
       }
     },
     cssmetrics: {
@@ -67,7 +70,7 @@ module.exports = function(grunt) {
       },
       sass: {
         files: '<%= globalConfig.project_path%>/<%= globalConfig.scss_folder %>/**/*.scss',
-        tasks: ['sass'],
+        tasks: ['sass:dist'],
         options: {
           livereload: true
         }
