@@ -1,3 +1,5 @@
+# ARCHIVED. NO LONGER MAINTAINED. FORK AT YOUR OWN RISK.
+
 Grunt-Fender - v0.2.3
 =====================
 
